@@ -1,8 +1,8 @@
-name: CI Workflow (1)
-on: [push, pull_request] (2)
-jobs: (3)
-  build: (4)
-    runs-on: ubuntu-latest (4)
-    steps: (5)
-      - name: Checkout repository (6)
-        uses: actions/checkout@v4 (7)
+name: CI Workflow 
+on: [push, pull_request] 
+jobs: 
+  build: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: Checkout repository 
+        uses: actions/checkout@v4 
