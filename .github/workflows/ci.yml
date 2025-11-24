@@ -31,15 +31,15 @@ jobs:
       - name: Compile LaTeX document
         run: |
           latexmk -pdf main.tex
-          mv main.pdf ${{ github.event.inputs.environment }}
+          mv main.pdf ${{ github.event.inputs.environment || "cv-marie-cara.pdf" }}
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: main-pdf
-          path: ${{ github.event.inputs.environment }}
+          path: ${{ github.event.inputs.environment || "cv-marie-cara.pdf" }}
       - name: summary
         run: |
             echo "CI workflow completed successfully." >> $GITHUB_STEP_SUMMARY
             echo "PDF document is available for download." >> $GITHUB_STEP_SUMMARY
             echo "Artifact name: main-pdf" >> $GITHUB_STEP_SUMMARY
-            echo "File path: ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+            echo "File path: ${{ github.event.inputs.environment  || "cv-marie-cara.pdf"}}" >> $GITHUB_STEP_SUMMARY
