@@ -18,9 +18,9 @@ on:
         required: false
         type: boolean
       environment:
-        description: 'Environment to run tests against'
+        description: 'name of the pdf'
         type: string
-        default: 'staging'
+        default: 'cv-marie-cara.pdf'
 
 jobs: 
   build: 
@@ -29,15 +29,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Compile LaTeX document
-        run: latexmk -pdf main.tex
+        run: |
+          latexmk -pdf main.tex
+          mv main.pdf ${{ github.event.inputs.environment }}
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: main-pdf
-          path: main.pdf
+          path: ${{ github.event.inputs.environment }}
       - name: summary
         run: |
             echo "CI workflow completed successfully." >> $GITHUB_STEP_SUMMARY
             echo "PDF document is available for download." >> $GITHUB_STEP_SUMMARY
             echo "Artifact name: main-pdf" >> $GITHUB_STEP_SUMMARY
-            echo "File path: main.pdf" >> $GITHUB_STEP_SUMMARY
+            echo "File path: ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
