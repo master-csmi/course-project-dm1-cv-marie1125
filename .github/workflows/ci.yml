@@ -1,10 +1,66 @@
 name: CI Workflow 
-on: [push, pull_request,workflow_dispatch] 
+on: 
+  push:
+    branches:
+      - '*'
+    tags:
+      - "v*"
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'name of the pdf'
+        type: string
+        default: 'cv-marie-cara.pdf'
+
 jobs: 
   build: 
-    runs-on: self-ubuntu-24.04 
+    runs-on: self-ubuntu-24.04
     steps: 
-      - name: Checkout repository 
-        uses: actions/checkout@v4 
-      - name: Compile LaTex document
-        run: latexmk -pdf main.tex
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Compile LaTeX document
+        run: |
+          latexmk -pdf main.tex
+          mv main.pdf ${{ inputs.environment || 'cv-marie-cara.pdf' }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: main-pdf
+          path: ${{ inputs.environment || 'cv-marie-cara.pdf' }}
+      
+      - name: summary
+        run: |
+            echo "CI workflow completed successfully." >> $GITHUB_STEP_SUMMARY
+            echo "PDF document is available for download." >> $GITHUB_STEP_SUMMARY
+            echo "Artifact name: main-pdf" >> $GITHUB_STEP_SUMMARY
+            echo "File path: ${{ inputs.environment || 'cv-marie-cara.pdf' }}" >> $GITHUB_STEP_SUMMARY
+  release:
+# release on tag push, on pre-release if not on main branch    
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: self-ubuntu-24.04
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: main-pdf
+      - name: Release artifact
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ inputs.environment || 'cv-marie-cara.pdf' }}
+          prerelease: ${{ github.ref != 'refs/heads/main' }}
+          generate_release_notes: true
