@@ -1,0 +1,235 @@
+% a mashup of hipstercv, friggeri and twenty cv
+% https://www.latextemplates.com/template/twenty-seconds-resumecv
+% https://www.latextemplates.com/template/friggeri-resume-cv
+
+\documentclass[lighthipster]{simplehipstercv}
+% available options are: darkhipster, lighthipster, pastel, allblack, grey, verylight, withoutsidebar
+
+\usepackage[utf8]{inputenc}
+\usepackage[default]{raleway}
+\usepackage[margin=1cm, a4paper]{geometry}
+
+%------------------------------------------------------------------ Variables
+
+\newlength{\rightcolwidth}
+\newlength{\leftcolwidth}
+\setlength{\leftcolwidth}{0.23\textwidth}
+\setlength{\rightcolwidth}{0.75\textwidth}
+
+%------------------------------------------------------------------
+\title{New Simple CV}
+\author{\LaTeX{} Ninja}
+\date{June 2019}
+
+\pagestyle{empty}
+\begin{document}
+
+\thispagestyle{empty}
+
+%-------------------------------------------------------------
+\section*{Start}
+
+\simpleheader{headercolour}{Marie}{Cara}{Étudiante}{white}
+
+%------------------------------------------------
+
+\subsection*{}
+\vspace{4em}
+
+\setlength{\columnsep}{1.5cm}
+\columnratio{0.23}[0.75]
+\begin{paracol}{2}
+\hbadness5000
+
+\paracolbackgroundoptions
+
+\footnotesize
+{\setasidefontcolour
+\flushright
+
+\begin{center}
+    \roundpic{id_picture.jpg}
+\end{center}
+
+\begin{center}
+
+\bg{cvgreen}{white}{À propos de moi}\\[0.5em]
+
+{\footnotesize
+Je suis actuellement étudiante en première année de master au sein du programme CSMI de l'Université de Strasbourg.
+J'ai récemment obtenu une licence en mathématiques et informatique à l'Université de Bordeaux, après avoir passé une année à l'étranger à l'Université de Linnaeus en Suède.
+Je suis passionnée par la compréhension du monde qui m'entoure et la résolution de problèmes complexes. Mes études en mathématiques appliquées me permettent de développer de nouvelles approches de pensée et des compétences innovantes en résolution de problèmes.
+}
+
+\bigskip
+
+\bg{cvgreen}{white}{Informations personnelles} \\[0.5em]
+
+Marie Cara
+
+Nationalité : Française
+
+2004
+
+\bigskip
+
+\bg{cvgreen}{white}{Domaine de spécialisation} \\[0.5em]
+
+Mathématiques appliquées ~•~ Algorithmes ~•~ Programmation
+
+\bigskip
+
+\bg{cvgreen}{white}{Intérêts}\\[0.5em]
+
+Sports ~•~ Voyages ~•~ Résolution de problèmes ~•~ Découverte de nouvelles technologies
+
+\end{center}
+
+\bigskip
+\vspace{4em}
+
+\infobubble{\faAt}{cvgreen}{white}{marie.cara@free.fr}
+\infobubble{\faLinkedin}{cvgreen}{white}{Marie Cara}
+\infobubble{\faGithub}{cvgreen}{white}{marie1125}
+
+\phantom{turn the page}
+\phantom{turn the page}
+
+}
+
+%-----------------------------------------------------------
+\switchcolumn
+
+\small
+\section*{Résumé}
+
+\begin{tabular}{r| p{0.5\textwidth} c}
+
+\cvevent{2015--2022}{Nageuse et bénévole}{Club Nautique Pontissalien}{Pontarlier \color{cvred}}
+{Nageuse de niveau régional pendant 10 ans. J'ai enseigné la natation aux enfants pendant 3 ans et j'ai participé à l'organisation et à la gestion d'événements sportifs.}
+{blanc.png} \\
+
+\cvevent{2020--2022}{Serveuse / Femme de chambre}{Hotel Restaurant La Praire}{Chamonix \color{cvred}}
+{J'y ai travaillé comme employée saisonnière pendant trois étés. Mes principales tâches consistaient à préparer et nettoyer les chambres, à servir les clients et à aider à la préparation des repas.}
+{blanc.png}\\
+
+\cvevent{2023--2025}{Aide à domicile}{ADMR}{Chamonix \color{cvred}}
+{J'ai travaillé comme aide à domicile saisonnière pendant deux étés. J'ai accompagné des personnes âgées ou malades dans leurs activités quotidiennes telles que les promenades, les sorties et les tâches ménagères.}
+{blanc.png}
+
+\end{tabular}
+
+\vspace{3em}
+
+\begin{minipage}[t]{0.35\textwidth}
+
+\section*{Diplôme}
+
+\begin{tabular}{r p{0.6\textwidth} c}
+
+\cvdegree{2022}{Baccalauréat}{Lycée Xavier Marmier}{France \color{headerblue}}{}{logo_marmier.jpeg} \\
+
+\cvdegree{2022-2025}{Licence en mathématiques et informatique}{Université de Bordeaux}{France \color{headerblue}}{}{logo_bordeaux.png} \\
+
+\end{tabular}
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.3\textwidth}
+
+\section*{Programming}
+
+\begin{itemize}
+
+\item Python (OOP, pandas, numpy)
+
+\item C (Operating system)
+
+\item C++ (OOP)
+
+\item Javascript (OOP)
+
+\item R (extraction et analyse)
+
+\item SQL, NoSQL, MongoDB (usage sur bases de données simples et interaction entre les différents langages)
+
+\end{itemize}
+
+\end{minipage}
+
+\section*{Curriculum}
+
+\begin{tabular}{r| p{0.5\textwidth} c}
+
+\cvevent{2022-2025}{Licence de mathématiques et informatique}{Université de Bordeaux}{France \color{cvred}}
+{Acquisition de solides compétences en mathématiques (algèbre, analyse) et en informatique, avec une spécialisation en algorithmes et en programmation, principalement en Python et en C.}
+{logo_bordeaux.png} \\
+
+\cvevent{2024-2025}{Année d'échange}{Linnaeus University}{Sweden \color{cvred}}
+{J'ai effectué une année universitaire à l'étranger en suivant des cours de mathématiques et d'informatique.}
+{logo_linnaeus.png} \\
+
+\cvevent{2025--NOW}{Master CSMI}{Université de Strasbourg}{France \color{cvred}}
+{Je poursuis actuellement un master en mathématiques appliquées.}
+{logo_strasbourg.png} \\
+
+\end{tabular}
+
+\vspace{2em}
+
+\begin{minipage}[t]{0.3\textwidth}
+
+\section*{Certificates \& Grants}
+
+\begin{tabular}{>{\footnotesize\bfseries}r >{\footnotesize}p{0.55\textwidth}}
+
+2024 & TOEFL \\
+
+\end{tabular}
+
+\bigskip
+
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+
+\section*{Languages}
+
+\begin{tabular}{l | ll}
+
+\textbf{Français} & C2 & {\phantom{x}\footnotesize Langue maternelle} \\
+
+\textbf{Anglais} & C1 & \pictofraction{\faCircle}{cvgreen}{3}{black!30}{1}{\tiny} \\
+
+\end{tabular}
+
+\bigskip
+
+\end{minipage}
+
+%----------------------------------------------------------------------------------------
+% FINAL FOOTER
+%----------------------------------------------------------------------------------------
+
+\setlength{\parindent}{0pt}
+
+\begin{minipage}[t]{\rightcolwidth}
+
+\begin{center}
+\fontfamily{\sfdefault}\selectfont
+\color{black!70}
+
+{\small
+Marie Cara
+\icon{\faMapMarker}{cvgreen}{} Strasbourg
+\icon{\faPhone}{cvgreen}{} +33 7 69 97 36 44
+\icon{\faAt}{cvgreen}{} \protect\url{marie.cara@free.fr}
+}
+
+\end{center}
+
+\end{minipage}
+
+\end{paracol}
+
+\end{document}
